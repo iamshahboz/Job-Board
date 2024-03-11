@@ -1,3 +1,4 @@
 webapp/__pycache__/
 job/__pycache__/
 account/__pycache__/
+.env
