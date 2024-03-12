@@ -4,4 +4,6 @@ account/__pycache__/
 .env
 account/__pycache__/
 webapp/__pycache__/
+account/migrations/__pycache__/
+job/migrations/__pycache__/
 
