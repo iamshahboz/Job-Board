@@ -41,8 +41,13 @@ class Vacancy(TimeStampedModel):
 class Company(TimeStampedModel):
     name = models.CharField(max_length=100)
     description = models.TextField()
-    logo = models.ImageField()
+    logo = models.ImageField(upload_to ='logo/% Y/% m/% d/')
     verified = models.BooleanField(default=False)
+
+    # this methods allows to delete the image from the media root when delete method called
+    def delete(self):
+        self.logo.delete()
+        super().delete()
 
     def __str__(self):
         return self.name 
