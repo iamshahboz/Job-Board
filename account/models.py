@@ -19,7 +19,7 @@ class Candidate(TimeStampedModel):
     surname = models.CharField(max_length=100)
     name = models.CharField(max_length=100)
     date_of_birth = models.DateField()
-    photo = models.ImageField()
+    photo = models.ImageField(upload_to ='candidates/% Y/% m/% d/')
     education = models.ManyToManyField(University, related_name='candidates_attended')
     class DegreeChoices(models.TextChoices):
         BACHELORS = "B.S.", ('Bachelors')
@@ -27,6 +27,11 @@ class Candidate(TimeStampedModel):
         DOCTOR = "Ph.D.", ('Ph.D.')
     degree = models.CharField(max_length=20, choices=DegreeChoices.choices)
     skill = models.ManyToManyField(Skill, related_name='candidates_with_skill')
+
+    # this method allows you to delete the file from media root, while delete method called
+    def delete(self):
+        self.photo.delete()
+        super().delete()
 
     def __str__(self):
         return self.name 
