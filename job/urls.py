@@ -1,6 +1,8 @@
 from django.urls import path, include
 from rest_framework import routers
 from . import views
+from django.conf.urls import static 
+from django.conf import settings
 
 
 
@@ -15,4 +17,4 @@ urlpatterns = [
     path('company/',views.CompanyListCreate.as_view()),
     path('company/<int:pk>/',views.CompanyEdit.as_view()),
     
-]
+] 
