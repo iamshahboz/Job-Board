@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from account.models import User
 from django.http import HttpResponse
 from rest_framework import generics
+from account.serializers import CandidateSerializer
 from .models import Location, Skill, Vacancy, Company
 from .serializers import (
     LocationSerializer, SkillSerializer, VacancySerializer, CompanySerializer
@@ -43,6 +44,19 @@ class CompanyListCreate(generics.ListCreateAPIView):
 class CompanyEdit(generics.RetrieveUpdateDestroyAPIView):
     queryset = Company.objects.all().order_by('-id')
     serializer_class = CompanySerializer
+
+class CandidateListCreate(generics.ListCreateAPIView):
+    queryset = User.objects.all().order_by('-id')
+    serializer_class = CandidateSerializer
+
+    def perform_create(self, serializer):
+        serializer.save(role=User.RoleChoices.CANDIDATE)
+
+class CandidateEdit(generics.RetrieveUpdateDestroyAPIView):
+    queryset = User.objects.all().order_by('-id')
+    serializer_class = CandidateSerializer
+    
+
 
 
 
