@@ -6,4 +6,5 @@ account/__pycache__/
 webapp/__pycache__/
 account/migrations/__pycache__/
 job/migrations/__pycache__/
+media/
 
