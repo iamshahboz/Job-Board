@@ -1,4 +1,5 @@
-from .models import Location, Skill, Vacancy, Company 
+from .models import Location, Skill, Vacancy, Company
+from account.models import User
 from rest_framework import serializers 
 
 class LocationSerializer(serializers.ModelSerializer):
@@ -26,5 +27,11 @@ class CompanySerializer(serializers.ModelSerializer):
     class Meta:
         model = Company 
         fields = ['id','name','description','logo','verified']
+
+class CandidateSerializer(serializers.ModelSerializer):
+    id  = serializers.IntegerField(read_only=True)
+    class Meta:
+        model = User
+        fields = ['id','surname','name','date_of_birth','photo','education','degree','skill','phone','email']
         
 
