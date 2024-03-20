@@ -16,5 +16,7 @@ urlpatterns = [
     path('vacancy/<int:pk>/',views.VacancyEdit.as_view()),
     path('company/',views.CompanyListCreate.as_view()),
     path('company/<int:pk>/',views.CompanyEdit.as_view()),
+    path('candidate/',views.CandidateListCreate.as_view()),
+    path('candidate/<int:pk>',views.CandidateEdit.as_view()),
     
 ] 
