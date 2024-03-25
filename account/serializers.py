@@ -48,6 +48,14 @@ class CandidateSerializer(serializers.ModelSerializer):
         user.save()
         return user 
     
+
+class CandidateEdit(serializers.ModelSerializer):
+    id = serializers.IntegerField(read_only=True)
+    class Meta:
+        model = User 
+        fields = ['id','surname','name','date_of_birth','photo','education','degree','skill','phone']
+        
+    
         
 
     
