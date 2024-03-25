@@ -28,10 +28,5 @@ class CompanySerializer(serializers.ModelSerializer):
         model = Company 
         fields = ['id','name','description','logo','verified']
 
-class CandidateSerializer(serializers.ModelSerializer):
-    id  = serializers.IntegerField(read_only=True)
-    class Meta:
-        model = User
-        fields = ['id','surname','name','date_of_birth','photo','education','degree','skill','phone','email']
-        
+
 
