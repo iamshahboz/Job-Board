@@ -30,9 +30,6 @@ class CustomAccountManager(BaseUserManager):
         user.save()
         return user
 
- 
-    
-
         
 
 # in order to add created_at, updated_at fields to all models this model created
@@ -51,9 +48,6 @@ class University(TimeStampedModel):
     
 
 
-
-
-
 class User(AbstractBaseUser, PermissionsMixin):
     username = None
     surname = models.CharField(max_length=100)
@@ -67,7 +61,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         DOCTOR = "Ph.D.", ('Ph.D.')
     degree = models.CharField(max_length=20, choices=DegreeChoices.choices)
     skill = models.ManyToManyField(Skill, related_name='candidates_with_skill')
-    phone = models.IntegerField()
+    phone = models.IntegerField(null=True, blank=True)
     email = models.EmailField(max_length=100, unique=True)
     class RoleChoices(models.IntegerChoices):
         ADMIN = 1, "Admin"
@@ -84,7 +78,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     objects = CustomAccountManager()
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['role',]
+    REQUIRED_FIELDS = []
 
 
     # this method allows you to delete the file from media root, while delete method called
