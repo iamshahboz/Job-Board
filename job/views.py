@@ -45,16 +45,7 @@ class CompanyEdit(generics.RetrieveUpdateDestroyAPIView):
     queryset = Company.objects.all().order_by('-id')
     serializer_class = CompanySerializer
 
-class CandidateListCreate(generics.ListCreateAPIView):
-    queryset = User.objects.all().order_by('-id')
-    serializer_class = CandidateSerializer
 
-    def perform_create(self, serializer):
-        serializer.save(role=User.RoleChoices.CANDIDATE)
-
-class CandidateEdit(generics.RetrieveUpdateDestroyAPIView):
-    queryset = User.objects.all().order_by('-id')
-    serializer_class = CandidateSerializer
     
 
 
