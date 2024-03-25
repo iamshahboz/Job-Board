@@ -1,5 +1,4 @@
-from django.urls import path, include
-from rest_framework import routers
+from django.urls import path
 from . import views
 from django.conf.urls import static 
 from django.conf import settings
@@ -16,7 +15,6 @@ urlpatterns = [
     path('vacancy/<int:pk>/',views.VacancyEdit.as_view()),
     path('company/',views.CompanyListCreate.as_view()),
     path('company/<int:pk>/',views.CompanyEdit.as_view()),
-    path('candidate/',views.CandidateListCreate.as_view()),
-    path('candidate/<int:pk>',views.CandidateEdit.as_view()),
+
     
 ] 
