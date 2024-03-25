@@ -69,9 +69,6 @@ class User(AbstractBaseUser, PermissionsMixin):
         EMPLOYEE = 3, "Employee"
         MODERATOR = 4, "Moderator"
     role = models.IntegerField(choices=RoleChoices.choices)
-    is_active = models.BooleanField(default=True)
-    is_staff = models.BooleanField(default=True) # a admin user; non super-user
-    is_superuser = models.BooleanField(default=True) # a superuser
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
